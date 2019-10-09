@@ -20,4 +20,4 @@ bamazon shows you the following categories:
 ## NPM Dependencies
 
 * Inquirer, to take user input
-* MySQL, to interact with the database
+* MySQL, to create and update the database
