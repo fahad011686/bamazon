@@ -1,14 +1,14 @@
 # bamazon
 
-![title](.data/img/logo.png)
+![title](./data/img/logo.png)
 
 This application is an Am*zon-like storefront using an updating database on MySQL through Node.js. 
 
-![intro](./img/1_intro.png)
+![intro](./data/img/1_intro.png)
 
 The app starts off by asking for your username, which it will frequently use throughout your time shopping on *Bamazon*, for a friendlier experience!
 
-![menu](./img/2_menu.png)
+![menu](./data/img/2_menu.png)
 
 After your name is taken, you are presented with options to **Sell** and **Purchase**.
 
@@ -23,7 +23,7 @@ The *bamazon* database has the following categories assigned to all products for
 
 ## Sell
 
-![list](./img/3_list.png)
+![list](./data/img/3_list.png)
 
 Selling an item on *bamazon* is as simple as typing in a name for your product, a department name to categorize the listing, and an input for the price.
 
@@ -47,11 +47,11 @@ function check() {
 
 Purchasing on *bamazon* has a built in method to send a request to the database, which responds with how much of the selected product is in stock. If we are sold out, *bamazon* returns you to the menu.
 
-![buy](./img/4_buy.png)
+![buy](./data/img/4_buy.png)
 
 *bamazon* will update you with how many products are still in stock. In this case, we have purchased **the last of the Halloween Candy**.
 
-![soldout](./img/5_soldout.png)
+![soldout](./data/img/5_soldout.png)
 
 If you attempt to purchase a sold out product, again *bamazon* informs you and redirects you to the menu.
 
