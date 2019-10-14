@@ -1,19 +1,9 @@
+var connection = require("./connection.js");
 require('dotenv').config();
 var inquirer = require("inquirer");
 var mysql = require("mysql");
 
 
-var connection = mysql.createConnection({
-    host: "localhost",
-    port: 3306,
-    user: "root",
-    password: "root",
-    database: "bamazonDB"
-});
-
-connection.connect(function (err) {
-    if (err) throw err;
-});
 var userName = "";
 
 function welcome() {
@@ -63,6 +53,8 @@ function display() {
     });
 }
 
+
+
 function buyBuy() {
     console.log("You have chosen to purchase an item.")
     display();
@@ -81,7 +73,42 @@ function buyBuy() {
     ])
         .then(function (res) {
             if (res.confirm) {
-                console.log("\nYou have made a purchase!");
+                //check if product is in stock
+                function check() {
+                    connection.query("SELECT stock_quantity FROM products WHERE item_id=" + res.item_id,
+                        function (err, response) {
+                            if (err) throw err;
+                            if (response[0].stock_quantity < 1) {
+                                console.log("We are out of stock!");
+                                bamazon();
+                            }
+                            else {
+                                console.log("Thank you for your purchase!");
+                                updatedQ = response[0].stock_quantity -1;
+                                console.log(updatedQ + " remaining.");
+
+                                connection.query(
+                                    "UPDATE products SET ? WHERE ?",
+                                    [
+                                        {
+                                            stock_quantity: updatedQ
+                                        },
+                                        {
+                                            item_id: res.item_id
+                                        }
+                                    ],
+                                    function (error) {
+                                        if (error) throw err;
+
+                                    }
+                                );
+
+                                bamazon();
+                            }
+                        });
+
+                };
+                check();
 
             }
             else {
