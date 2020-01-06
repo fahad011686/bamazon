@@ -2,7 +2,7 @@ var connection = require("./connection.js");
 require('dotenv').config();
 var inquirer = require("inquirer");
 var mysql = require("mysql");
-
+const { table } = require('table');
 
 var userName = "";
 
@@ -43,14 +43,24 @@ function bamazon() {
     });
 }
 
-function display() {
+let output;
 
-    console.log("Here is what we have for sale:\n");
+function makeArray(arrayOfObjs) {
+    let titles = Object.keys(arrayOfObjs[0]);
+    return [
+        titles,
+        ...arrayOfObjs.map(function (a) { return Object.values(a); })
+    ];
+}
+
+function display() {
     connection.query("SELECT * FROM products", function (err, res) {
         if (err) throw err;
-        console.log(res);
-        // connection.end();
-    });
+    // connection.end();
+    output = makeArray(res);
+    console.log(output);
+    console.log("Please type the id# of the item you would like:\n");
+});
 }
 
 
@@ -61,7 +71,6 @@ function buyBuy() {
     inquirer.prompt([
         {
             type: "input",
-            message: "Please type the id# of the item you would like:",
             name: "item_id"
         },
         {
@@ -84,7 +93,7 @@ function buyBuy() {
                             }
                             else {
                                 console.log("Thank you for your purchase!");
-                                updatedQ = response[0].stock_quantity -1;
+                                updatedQ = response[0].stock_quantity - 1;
                                 console.log(updatedQ + " remaining.");
 
                                 connection.query(
