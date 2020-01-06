@@ -60,3 +60,4 @@ If you attempt to purchase a sold out product, again *bamazon* informs you and r
 * Dotenv, to hold databse connection settings
 * Inquirer, to take user input
 * MySQL, to create and update the database
+* Table, to display inventory
