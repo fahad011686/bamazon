@@ -58,3 +58,4 @@ The snippet above checks the product inventory and if you attempt to purchase a 
 * Dotenv, to hold databse connection settings
 * Inquirer, to take user input
 * MySQL, to create and update the database
+* Table, to display inventory
