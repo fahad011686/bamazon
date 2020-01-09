@@ -31,7 +31,9 @@ After confirmation, the listing is made and your product is updated on the MySQL
 
 ## Purchase
 
-When buying on *bamazon*, you are presented with a table of items available. You can simply find the listing for what you would like and enter the item number provided.
+When buying on *bamazon*, you are presented with a table of items available. You can simply find the listing for what you would like and enter the item number provided. *bamazon* has a built in method to send a request to the database, which responds with how much of the selected product is in stock. In the example below, the Coca Cola's stock reflects the purchase from 8 to 7.
+
+![buy](./data/img/purchase.gif)
 
 ```javascript
 function check() {
@@ -44,17 +46,13 @@ function check() {
         console.log(updatedQ + " remaining.");
         connection.query("UPDATE products SET ? WHERE ?")}                         
 ```
-
-Purchasing on *bamazon* has a built in method to send a request to the database, which responds with how much of the selected product is in stock. If we are sold out, *bamazon* returns you to the menu.
+The snippet above checks the product inventory and if you attempt to purchase a sold out product, *bamazon* will inform and redirect you to the menu.
 
 ![buy](./data/img/4_buy.png)
 
 *bamazon* will update you with how many products are still in stock. In this case, we have purchased **the last of the Halloween Candy**.
 
 ![soldout](./data/img/5_soldout.png)
-
-If you attempt to purchase a sold out product, again *bamazon* informs you and redirects you to the menu.
-
 
 ## NPM Dependencies
 * Dotenv, to hold databse connection settings
