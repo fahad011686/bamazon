@@ -55,7 +55,7 @@ The snippet above checks the product inventory and if you attempt to purchase a 
 ![soldout](./data/img/5_soldout.png)
 
 ## NPM Dependencies
-* Dotenv, to hold databse connection settings
+* Dotenv, to hold database connection settings
 * Inquirer, to take user input
 * MySQL, to create and update the database
 * Table, to display inventory
