@@ -30,15 +30,18 @@ function bamazon() {
             type: "list",
             name: "choice",
             message: "Make a selection:",
-            choices: ["Purchase", "Sell"]
+            choices: ["Purchase", "Sell", "View Inventory"]
         }
 
     ]).then(function (menu) {
         if (menu.choice === "Sell") {
             sellSell();
         }
-        else {
+        else if (menu.choice === "Buy") {
             buyBuy();
+        }
+        else {
+            viewAll();
         }
     });
 }
@@ -56,11 +59,21 @@ function makeArray(arrayOfObjs) {
 function display() {
     connection.query("SELECT * FROM products", function (err, res) {
         if (err) throw err;
-    // connection.end();
-    output = makeArray(res);
-    console.log(output);
-    console.log("Please type the id# of the item you would like:\n");
-});
+        // connection.end();
+        output = makeArray(res);
+        console.log(output);
+        console.log("Please type the id# of the item you would like:\n");
+    });
+}
+
+function viewAll() {
+    connection.query("SELECT * FROM products", function (err, res) {
+        if (err) throw err;
+        // connection.end();
+        output = makeArray(res);
+        console.log(output);
+        bamazon();
+    });
 }
 
 
