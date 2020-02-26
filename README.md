@@ -10,7 +10,7 @@ The app starts off by asking for your username, which it will frequently use thr
 
 ![menu](./data/img/2_menu.png)
 
-After your name is taken, you are presented with options to **Sell** and **Purchase**.
+After your name is taken, you are presented with options to **Sell**, **Purchase**, and **View All** inventory without making any changes.
 
 ## Functions
 
